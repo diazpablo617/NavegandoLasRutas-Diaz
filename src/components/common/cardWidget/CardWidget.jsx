@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
 
-export const CardWidget = () => {
+const CardWidget = () => {
+  const { getTotalItems } = useContext(CartContext);
   return (
     <div>
       <Link to="/Cart">
         <FaShoppingCart />
-        <h3>0</h3>{" "}
+        <h3>{getTotalItems()}</h3>
       </Link>
     </div>
   );

@@ -4,18 +4,23 @@ import ItemDetail from "./components/pages/ItemDatail/ItemDetail";
 import { ItemListContainer } from "./components/pages/ItemListContainer/ItemListContainer";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartContextProvider from "./context/CartContext";
+import Checkout from "./components/pages/Checkout/Checkout";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:name" element={<ItemListContainer />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/Detail/:id" element={<ItemDetail />} />
-        </Routes>
+        <CartContextProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/category/:name" element={<ItemListContainer />} />
+            <Route path="/Cart" element={<Cart />} />
+            <Route path="/Detail/:id" element={<ItemDetail />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>
     </div>
   );
